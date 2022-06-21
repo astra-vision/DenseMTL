@@ -1,9 +1,9 @@
 # Cross-task Attention Mechanism for Dense Multi-task Learning
 
 **Cross-task Attention Mechanism for Dense Multi-task Learning**] \[[arXiv](https://arxiv.org/abs/2206.08927)\] \
-Ivan Lopes<sup>1</sup>,
+[Ivan Lopes<sup>1</sup>](https://wonjunior.github.io/),
 [Tuan-Hung Vu<sup>2</sup>](https://tuanhungvu.github.io/),
-[Raoul de Charette<sup>1</sup>](https://team.inria.fr/rits/membres/raoul-de-charette/)
+[Raoul de Charette<sup>1</sup>](https://team.inria.fr/rits/membres/raoul-de-charette/)</br>
 <sup>1</sup> Inria, Paris, France.
 <sup>2</sup> Valeo.ai, Paris, France.
 

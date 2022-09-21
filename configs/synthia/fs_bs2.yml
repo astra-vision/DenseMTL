@@ -1,0 +1,59 @@
+
+data:
+  n_classes: 16
+  dataset: synthia
+  path: $ENV:SYNTHIA_DIR
+  dataset_seed: 42
+  frame_ids: [0, -1, 1]
+  width: 1024
+  height: 512
+
+  load_sequences: False
+  load_semantic_gt: True
+  train_bs: 2
+  valid_bs: 2
+  n_valid_logged: 2
+  n_train_logged: 2
+
+  num_scales: 4
+  augmentations:
+    random_horizontal_flip: 0.5
+  color_full_scale: 0
+  only_sequences_with_segmentation: True
+  restrict_to_subset:
+  val_downsample_gt: True
+  src_split: train
+  val_split: val
+  inverse_depth: True
+
+training:
+  logdir: $ENV:LOG_DIR/
+  n_workers: 2
+  seed: 42
+  shuffle_trainset: True
+  iterations: 40_000
+  use_amp: False
+  benchmark: True
+  detect_anomaly: False
+  print_interval: 100
+  resume: null
+  save_model: False
+  save_finished_model: True
+  val_interval:
+    '0': 100
+    '100': 200
+    '1000': 2500
+    '30000': 1000
+
+optim:
+  name: SGD
+  clip_grad_norm: 10
+  kwargs:
+    momentum: 0.9
+    weight_decay: 5.e-4
+
+scheduler:
+  name: step
+  kwargs:
+    step_size: 30_000
+    gamma: 0.1

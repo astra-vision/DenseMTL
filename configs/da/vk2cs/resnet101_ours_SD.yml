@@ -1,0 +1,85 @@
+setup:
+  name: ours-cxatt
+  model:
+    backbone: resnet101
+    use_dilation: [False, False, True]
+    tasks:
+      semseg:
+        head: padnet+
+        kwargs:
+          aspp_rates: [6, 12, 18]
+          intermediate_aspp: True
+          num_ch_dec: [64, 128, 128, 256, 256]
+          num_out_ch: 8
+          active_scales: [1, 0]
+          # aspp_pooling: False
+      depth:
+        head: padnet+
+        kwargs:
+          aspp_rates: [6, 12, 18]
+          intermediate_aspp: True
+          num_ch_dec: [64, 128, 128, 256, 256]
+          num_out_ch: 1
+          active_scales: [1, 0]
+          # aspp_pooling: False
+  kwargs:
+    ablation: ['SxTAM', 'SA', 'add']
+    enc_layers: [[4, 3, 2, 1], [0]]
+    stages: [1]
+  loss:
+    tasks:
+      semseg:
+        loss: cross_entropy
+        kwargs:
+          n_classes: 8
+          scales: [1, 0]
+          weight: 50
+      depth:
+        loss: berhu
+        kwargs:
+          scales: [1, 0]
+          weight: 1
+    kwargs:
+      baselines:
+        semseg: 0.78
+        depth: 5.33
+      gammas:
+        semseg: 0
+        depth: 1
+  lr:
+    default: 2.5e-4
+    backbone: 1.5e-5
+
+optim:
+  name: Adam
+  kwargs:
+    betas: [0.9, 0.98]
+  clip_grad_norm: 10
+
+training:
+  da:
+    doda: True
+    lr_D: 1.0e-4
+
+    # entropy alignment
+    ent_align: [1, 0]
+    lambda_adv_ent: 0.005
+    lambda_disc_ent: 1
+
+  logdir: $ENV:LOG_DIR/
+  n_workers: 2
+  seed: 42
+  shuffle_trainset: True
+  iterations: 90_000
+  max_iterations: 90_000
+  use_amp: False
+  benchmark: True
+  detect_anomaly: False
+  print_interval: 50
+  resume: null
+  save_model: False
+  save_finished_model: True
+  val_interval:
+    '0': 500
+    '1000': 2500
+    '30000': 1000

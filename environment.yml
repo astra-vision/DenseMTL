@@ -1,0 +1,24 @@
+name: py
+channels:
+  - pyg
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=10.2.89=hfd86e86_1
+  - imageio=2.9.0=py_0
+  - numpy=1.21.2=py38h20f2e39_0
+  - pillow=8.4.0=py38h5aabda8_0
+  - pip=21.2.4=py38h06a4308_0
+  - python=3.8.8=hdb3f193_5
+  - pytorch=1.10.0=py3.8_cuda10.2_cudnn7.6.5_0
+  - torchvision=0.11.1=py38_cu102
+  - yaml=0.2.5=h516909a_0
+  - pip:
+    - easydict==1.9
+    - matplotlib==3.4.3
+    - opencv-python-headless==4.5.4.58
+    - termcolor==1.1.0
+    - tqdm==4.62.3
+    - wandb==0.12.9
+    - protobuf==3.19.1

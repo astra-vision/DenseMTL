@@ -1,0 +1,78 @@
+# this should be the same as resnet101_ours_SD_SCxg.yml
+setup:
+  name: ours-cxatt
+  model:
+    backbone: resnet101
+    use_dilation: [False, False, True]
+    tasks:
+      semseg:
+        head: padnet+
+        kwargs:
+          aspp_rates: [6, 12, 18]
+          intermediate_aspp: True
+          num_ch_dec: [64, 128, 128, 256, 256]
+          num_out_ch: 16
+          active_scales: [0, 1]
+      depth:
+        head: padnet+
+        kwargs:
+          aspp_rates: [6, 12, 18]
+          intermediate_aspp: True
+          num_ch_dec: [64, 128, 128, 256, 256]
+          num_out_ch: 1
+          active_scales: [0, 1]
+      normals:
+        head: padnet+
+        kwargs:
+          aspp_rates: [6, 12, 18]
+          intermediate_aspp: True
+          num_ch_dec: [64, 128, 128, 256, 256]
+          num_out_ch: 3
+          active_scales: [0, 1]
+  kwargs:
+    ablation: ['SxTAM', 'SA', 'add']
+    enc_layers: [[4, 3, 2, 1], [0]]
+    stages: [1]
+  loss:
+    tasks:
+      semseg:
+        loss: cross_entropy
+        kwargs:
+          n_classes: 16
+          scales: [0, 1]
+          weight: 100
+      depth:
+        loss: berhu
+        kwargs:
+          median_scaling: False
+          scales: [0, 1]
+          weight: 1
+      normals:
+        loss: normals
+        kwargs:
+          scales: [0, 1]
+          weight: 100
+    kwargs:
+      baselines:
+        semseg: 76
+        depth: 15
+        normals: 10
+      gammas:
+        semseg: 0
+        depth: 1
+        normals: 1
+  lr:
+    default: 1.0e-4
+    backbone: 1.0e-5
+
+optim:
+  name: Adam
+  kwargs:
+    betas: [0.9, 0.98]
+  clip_grad_norm: 10
+
+scheduler:
+  name: step
+  kwargs:
+    step_size: 30_000
+    gamma: 0.1

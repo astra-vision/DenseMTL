@@ -1,0 +1,21 @@
+setup:
+  name: baseline
+  model:
+    backbone: resnet101
+    use_dilation: [False, False, True]
+    tasks:
+      semseg:
+        head: deeplab
+        kwargs:
+          num_out_ch: 40
+  loss:
+    tasks:
+      semseg:
+        loss: cross_entropy
+        kwargs:
+          scales: [0]
+          n_classes: 40
+    kwargs:
+  lr:
+    default: 1.0e-2
+    backbone: 1.0e-3

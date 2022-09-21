@@ -1,0 +1,14 @@
+**/__pycache__
+_data
+results
+.vscode
+wandb
+jzout*
+*logs*
+
+# excluded from the party
+/weights
+/jobs
+**.tar.gz
+configs/**/_*
+*.txt

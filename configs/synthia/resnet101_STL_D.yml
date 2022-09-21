@@ -1,0 +1,21 @@
+setup:
+  name: baseline
+  model:
+    backbone: resnet101
+    use_dilation: [False, False, True]
+    tasks:
+      depth:
+        head: deeplab
+        kwargs:
+          num_out_ch: 1
+  loss:
+    tasks:
+      depth:
+        loss: berhu
+        kwargs:
+          median_scaling: False
+          scales: [0]
+    kwargs:
+  lr:
+    default: 1.0e-2
+    backbone: 1.0e-3

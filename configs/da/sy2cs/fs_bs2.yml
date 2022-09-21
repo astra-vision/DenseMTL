@@ -1,0 +1,44 @@
+data:
+  source:
+    dataset: synthia
+    path: $ENV:SYNTHIA_DIR
+
+  target:
+    dataset: cityscapes
+    path: $ENV:CITYSCAPES_DIR
+
+  height: 512
+  width: 1024
+  n_classes: 16
+  restrict_to_subset:
+  load_sequences: False
+  load_semantic_gt: True
+  train_bs: 2
+  valid_bs: 2
+  n_valid_logged: 2
+  n_train_logged: 2
+  dataset_seed: 42
+  frame_ids: [0, -1, 1]
+  num_scales: 4
+  augmentations:
+    random_horizontal_flip: 0.5
+  color_full_scale: 0
+  only_sequences_with_segmentation: True
+  val_downsample_gt: True
+  src_split: all
+  tgt_split: train
+  val_split: val
+  inverse_depth: True
+
+optim:
+  name: SGD
+  clip_grad_norm: 10
+  kwargs:
+    momentum: 0.9
+    weight_decay: 0.0005
+
+scheduler:
+  name: step
+  kwargs:
+    step_size: 100_000
+    gamma: 0.1

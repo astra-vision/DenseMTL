@@ -15,7 +15,6 @@ from training import get_setup
 from loss import get_loss
 from optim import get_optimizer, get_scheduler
 from models.discriminator import Discriminator
-from vendor.ctrl_uda.cross_task_relation import DepthProb
 from vendor.advent.discriminator import get_fc_discriminator
 from vendor.advent.func import bce_loss, lr_poly, prob_2_entropy
 from utils.utils import colorize
@@ -305,3 +304,4 @@ class Trainer(TrainerBase):
                    'hist8x64': co(hist8x64),
                    'hist128x128': co(hist128x128),
                    'hist8x128': co(hist8x128)})
+

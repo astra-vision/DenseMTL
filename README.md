@@ -1,13 +1,13 @@
-# Multi-Task Learning for dense prediction tasks (DenseMTL)
+# Cross-task Attention Mechanism for Dense Multi-task Learning (DenseMTL)
 
-This repository provides the official source code and models for our [Multi-Task Learning for dense prediction tasks](https://arxiv.org/abs/2206.08927) paper (WACV 2023). The implementation is done using the [PyTorch](https://github.com/pytorch/pytorch) library.
+This repository provides the official source code and model weights for our [Cross-task Attention Mechanism for Dense Multi-task Learning](https://arxiv.org/abs/2206.08927) paper (WACV 2023). The implementation is done using the [PyTorch](https://github.com/pytorch/pytorch) library.
 
 <p align="center">
   <img src="./docs/dark.png#gh-dark-mode-only" width="700"/>
   <img src="./docs/light.png#gh-light-mode-only" width="700"/>
 </p>
 
-**DenseMTL: Multi-Task Learning for dense prediction tasks**\
+**DenseMTL: Cross-task Attention Mechanism for Dense Multi-task Learning**\
 [Ivan Lopes<sup>1</sup>](https://wonjunior.github.io/),
 [Tuan-Hung Vu<sup>1,2</sup>](https://tuanhungvu.github.io/),
 [Raoul de Charette<sup>1</sup>](https://team.inria.fr/rits/membres/raoul-de-charette/)</br>
@@ -27,7 +27,7 @@ To cite our paper, please use:
 
 # Table of content
 
-- [Multi-Task Learning for dense prediction tasks (DenseMTL)](#multi-task-learning-for-dense-prediction-tasks-densemtl)
+- [Cross-task Attention Mechanism for Dense Multi-task Learning (DenseMTL)](#cross-task-attention-mechanism-for-dense-multi-task-learning-densemtl)
 - [Table of content](#table-of-content)
 - [Overview](#overview)
 - [Installation](#installation)
@@ -38,6 +38,7 @@ To cite our paper, please use:
   - [1. Command Line Interface](#1-command-line-interface)
   - [2. Experiments](#2-experiments)
   - [3. Models](#3-models)
+    - [Our models on fully supervised training:](#our-models-on-fully-supervised-training)
   - [4. Evaluation](#4-evaluation)
   - [5. Visualization & Logging](#5-visualization--logging)
 - [Project structure](#project-structure)
@@ -90,7 +91,7 @@ Then activate environment `densemtl` using:
   ```html
   <SYNTHIA_DIR>/                % Synthia dataset root
   ├── RGB/                      % input images
-  ├── parsed_LABELS/            % semseg labels labels
+  ├── GT/                       % semseg labels labels
   └── Depth/                    % depth labels
   ```
 
@@ -210,8 +211,16 @@ To reproduce the experiments, you can run the following scripts.
 
 ## 3. Models
 
-*The weights of our models will be released soon.*
+### Our models on fully supervised training:
 
+| Setup | Set | Link |
+| :--- | :----: | :----: |
+| Synthia | SD | [sy_densemtl_SD.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/sy_densemtl_SD.pkl) |
+| Synthia | SDN | [sy_densemtl_SDN.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/sy_densemtl_SDN.pkl) |
+| Virtual Kitti 2 | SD | [vk_densemtl_SD.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/vk_densemtl_SD.pkl) |
+| Virtual Kitti 2 | SDN | [vk_densemtl_SDN.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/vk_densemtl_SDN.pkl) |
+| Cityscapes | SD | [cs_densemtl_SD.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/cs_densemtl_SD.pkl) |
+| Cityscapes | SDN | [cs_densemtl_SDN.pkl](https://github.com/cv-rits/DenseMTL/releases/download/weights/cs_densemtl_SDN.pkl) |
 
 ## 4. Evaluation
 
@@ -244,11 +253,11 @@ root
 ```
 
 # Credit
-This repository contains code taken from [valeoai's ADVENT](https://github.com/valeoai/ADVENT), [SimonVandenhende's MTL-survey](https://github.com/SimonVandenhende/Multi-Task-Learning-PyTorch), [nianticlabs's Monodepth2](https://github.com/nianticlabs/monodepth2), and [lhoyer's 3-Ways](https://github.com/lhoyer/improving_segmentation_with_selfsupervised_depth).
+This repository contains code taken from Valeo.ai's [ADVENT](https://github.com/valeoai/ADVENT), Simon Vandenhende's [MTL-survey](https://github.com/SimonVandenhende/Multi-Task-Learning-PyTorch), Niantic Labs' [Monodepth 2](https://github.com/nianticlabs/monodepth2), and Lukas Hoyer's [3-Ways](https://github.com/lhoyer/improving_segmentation_with_selfsupervised_depth).
 
 # License
 DenseMTL is released under the [Apache 2.0 license](./LICENSE).
 
 ---
 
-[↑ back to top](#multi-task-learning-for-dense-prediction-tasks-densemtl)
+[↑ back to top](#cross-task-attention-mechanism-for-dense-multi-task-learning-densemtl)

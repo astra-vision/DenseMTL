@@ -38,7 +38,6 @@ To cite our paper, please use:
   - [1. Command Line Interface](#1-command-line-interface)
   - [2. Experiments](#2-experiments)
   - [3. Models](#3-models)
-    - [Our models on fully supervised training:](#our-models-on-fully-supervised-training)
   - [4. Evaluation](#4-evaluation)
   - [5. Visualization & Logging](#5-visualization--logging)
 - [Project structure](#project-structure)
@@ -211,7 +210,7 @@ To reproduce the experiments, you can run the following scripts.
 
 ## 3. Models
 
-### Our models on fully supervised training:
+Our models on fully supervised training:
 
 | Setup | Set | Link |
 | :--- | :----: | :----: |

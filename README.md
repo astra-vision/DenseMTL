@@ -201,6 +201,7 @@ To reproduce the experiments, you can run the following scripts.
   ```
 
 - Our method on *domain adaptation* (DA):
+  (Update: Freeimage installation required. Use: conda install -c conda-forge freeimage )
   ```
   python main.py \
     --base=configs/da/<dataset>/fs_bs2.yml \
@@ -223,7 +224,7 @@ Our models on fully supervised training:
 
 ## 4. Evaluation
 
-To evaluate a model, the `--evaluate` option can be set with a path to the state dictionnary `.pkl` file. This weight file will be loaded onto the model and the evaluation loop launched. Keep in mind you also need to provide a valid configuration files in order to evaluate our method with weights located in `weights/vkitti2_densemtl_SD.pkl`, simply run `python main.py --config=configs/vkitti2/resnet101_ours_SD.yml --evaluate=weights/vkitti2densemtl.pkl`
+To evaluate a model, the `--evaluate` option can be set with a path to the state dictionnary `.pkl` file. This weight file will be loaded onto the model and the evaluation loop launched. Keep in mind you also need to provide a valid configuration files in order to evaluate our method with weights located in `weights/vkitti2_densemtl_SD.pkl`, simply run `python main.py --base=configs/vkitti2/fs_bs2.yml --config=configs/vkitti2/resnet101_ours_SD.yml --evaluate=weights/vkitti2densemtl.pkl`
 
 
 

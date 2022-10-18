@@ -1,5 +1,3 @@
-# Based on https://github.com/meetshah1995/pytorch-semseg/blob/master/ptsemseg/loader/cityscapes_loader.py
-
 import os
 import random
 import torch
@@ -49,17 +47,22 @@ class VKitti2(BaseDataset):
 
     def get_segmentation_path(self, index):
         # first replace will be an issue on JEANZAY
-        return self.files[index]['name'] \
-            .replace('vkitti2', 'vkitti2/classSegmentation') \
+        seg_path =  self.files[index]['name'] \
+            .replace('VKITTI2_DIR/rgb/', 'VKITTI2_DIR/classSegmentation/') \
             .replace('rgb/Camera_0/rgb_', 'classSegmentation/Camera_0/classgt_') \
             .replace('.jpg', '.png')
+        print (seg_path)
+        return seg_path
+
 
     def get_depth_path(self, index):
         # first replace will be an issue on JEANZAY
-        return self.files[index]['name'] \
-            .replace('vkitti2', 'vkitti2/depth') \
+        depth_path = self.files[index]['name'] \
+            .replace('VKITTI2_DIR/rgb/', 'VKITTI2_DIR/depth/') \
             .replace('rgb', 'depth') \
             .replace('.jpg', '.png')
+        print (depth_path)
+        return depth_path
 
     def get_depth(self, index, do_flip):
         import cv2

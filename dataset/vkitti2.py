@@ -48,16 +48,12 @@ class VKitti2(BaseDataset):
         return f'{prefix}_{int(frame_number) + offset:05d}.{ext}'
 
     def get_segmentation_path(self, index):
-        # first replace will be an issue on JEANZAY
         return self.files[index]['name'] \
-            .replace('vkitti2', 'vkitti2/classSegmentation') \
             .replace('rgb/Camera_0/rgb_', 'classSegmentation/Camera_0/classgt_') \
             .replace('.jpg', '.png')
 
     def get_depth_path(self, index):
-        # first replace will be an issue on JEANZAY
         return self.files[index]['name'] \
-            .replace('vkitti2', 'vkitti2/depth') \
             .replace('rgb', 'depth') \
             .replace('.jpg', '.png')
 

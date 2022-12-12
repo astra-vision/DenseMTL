@@ -14,6 +14,8 @@ This repository provides the official source code and model weights for our [Cro
 <sup>1</sup> Inria, Paris, France.
 <sup>2</sup> Valeo.ai, Paris, France.<br>
 
+<img src="./docs/berlin.gif" />
+
 To cite our paper, please use:
 ```
 @inproceedings{lopes2023densemtl,
@@ -39,7 +41,7 @@ To cite our paper, please use:
   - [2. Experiments](#2-experiments)
   - [3. Models](#3-models)
   - [4. Evaluation](#4-evaluation)
-  - [5. Visualization & Logging](#5-visualization--logging)
+  - [5. Visualization \& Logging](#5-visualization--logging)
 - [Project structure](#project-structure)
 - [Credit](#credit)
 - [License](#license)
